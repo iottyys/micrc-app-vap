@@ -1,0 +1,57 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type AuthorDTO {
+    id: ID!
+    name: String!
+}
+
+type AuthorWritten {
+    id: ID!
+    name: String!
+}
+
+type BookDTO {
+    author: AuthorDTO
+    bookName: String!
+    id: ID!
+}
+
+input AddBookInput {
+  id: ID!
+  authorName: String!
+  bookName: String!
+}
+
+type BookMutation {
+    addBook(book: AddBookInput!): BookWritten!
+}
+
+type BookPaged {
+    books: [BookDTO]!
+    offset: Int!
+    size: Int!
+}
+
+type BookQuery {
+    books: BookPaged!
+    findById: BookDTO!
+}
+
+type BookWritten {
+    author: AuthorWritten
+    bookName: String!
+    id: ID!
+}
+
+type Mutation {
+    bookMutation: BookMutation
+}
+
+type Query {
+    bookQuery: BookQuery
+}

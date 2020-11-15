@@ -1,6 +1,41 @@
 {
   "name": "mst-gql-vap",
   "version": "0.0.1",
-  "main": "index.js",
-  "license": "MIT"
+  "description": "bindings for mobx-state-tree and gql, generate store for vap",
+  "license": "MIT",
+  "main": "dist/mst-gql-vap.js",
+  "source": "src/mst-gql-vap.ts",
+  "umd:main": "dist/mst-gql-vap.umd.js",
+  "module": "dist/mst-gql-vap.module.js",
+  "jsnext:main": "dist/mst-gql-vap.module.js",
+  "react-native": "dist/mst-gql-vap.module.js",
+  "types": "./dist/mst-gql-vap.d.ts",
+  "scripts": {
+    "build": "microbundle --no-compress --external mobx,mobx-react,mobx-state-tree,graphql-tag,react,react-dom,graphql-request"
+  },
+  "dependencies": {
+    "global": "4.4.0",
+    "graphql": "15.4.0",
+    "graphql-request": "3.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.12.3",
+    "@babel/plugin-proposal-class-properties": "7.12.1",
+    "@babel/plugin-proposal-decorators": "7.12.1",
+    "@babel/preset-env": "7.12.1",
+    "@babel/preset-typescript": "7.12.1",
+    "@babel/register": "7.12.1",
+    "@types/jest": "26.0.15",
+    "@types/lodash": "4.14.165",
+    "@types/pluralize": "0.0.29",
+    "@types/react": "16.9.56",
+    "@types/react-dom": "16.9.9",
+    "@types/throttle-debounce": "2.1.0",
+    "microbundle": "0.12.4",
+    "mobx": "5.15.7",
+    "mobx-react": "6.3.1",
+    "mobx-state-tree": "3.17.2",
+    "subscriptions-transport-ws": "^0.9.18",
+    "typescript": "4.0.5"
+  }
 }
