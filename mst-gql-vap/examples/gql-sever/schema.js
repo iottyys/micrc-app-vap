@@ -16,11 +16,17 @@ const typeDefs = gql`
     # The "Query" type is special: it lists all of the available queries that
     # clients can execute, along with the return type for each. In this
     # case, the "books" query returns an array of zero or more Books (defined above).
-    type Query {
+    type QueryBooks {
         books: [Book]
     }
-    type Mutation {
+    type MutationBookOne {
         addBook(title: String, author: String): Book
+    }
+    type Query {
+        QueryBooks: QueryBooks
+    }
+    type Mutation {
+        MutationBookOne: MutationBookOne
     }
 `;
 
@@ -39,10 +45,10 @@ const books = [
 
 const resolvers = {
     Query: {
-        books: () => books,
+        QueryBooks: () => books,
     },
     Mutation: {
-        addBook: (root, args, ctx) => {
+        MutationBookOne: (root, args, ctx) => {
             console.log('args', args, ctx);
             return {
                 ...args,
