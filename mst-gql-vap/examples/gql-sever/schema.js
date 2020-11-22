@@ -45,7 +45,9 @@ const books = [
 
 const resolvers = {
     Query: {
-        QueryBooks: () => books,
+        QueryBooks: () => ({
+            books
+        }),
     },
     Mutation: {
         MutationBookOne: (root, args, ctx) => {
