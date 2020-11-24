@@ -3,6 +3,13 @@
  */
 export const config: any = {
   endpoints: {
+    localhost8000: {
+      http: {
+        url: 'http://localhost:8000/graphql',
+        options: {}
+      },
+      ws: null,
+    },
     endpoint1: {
       http: {
         url: 'http://localhost:8080/graphql',

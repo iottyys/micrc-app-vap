@@ -1,4 +1,4 @@
-const { ApolloServer, gql } = require('apollo-server');
+const { gql } = require('apollo-server');
 
 // A schema is a collection of type definitions (hence "typeDefs")
 // that together define the "shape" of queries that are executed against
@@ -7,10 +7,18 @@ const typeDefs = gql`
     # Comments in GraphQL strings (such as this one) start with the hash (#) symbol.
 
     # This "Book" type defines the queryable fields for every book in our data source.
+    type Author {
+        id: ID!
+        name: String!
+    }
     type Book {
-        id: String,
-        title: String
-        author: String
+        id: ID!
+        title: String!
+        author: Author!
+    }
+    type User {
+        id: ID!
+        name: String!
     }
 
     # The "Query" type is special: it lists all of the available queries that
@@ -19,14 +27,23 @@ const typeDefs = gql`
     type QueryBooks {
         books: [Book]
     }
-    type MutationBookOne {
-        addBook(title: String, author: String): Book
+    type QueryUsers {
+        users: [User]
     }
+    type MutationBook {
+        addBook(title: String, authorName: String): Book
+    }
+    type MutationUser {
+        addUser(name: String): User
+    }
+    
     type Query {
-        QueryBooks: QueryBooks
+        QueryBooks: QueryBooks,
+        QueryUsers: QueryUsers
     }
     type Mutation {
-        MutationBookOne: MutationBookOne
+        MutationBook: MutationBook,
+        MutationUser: MutationUser
     }
 `;
 
@@ -34,33 +51,70 @@ const books = [
     {
         id: '1',
         title: 'The Awakening',
-        author: 'Kate Chopin',
+        author: {
+            id: '1',
+            name: 'Kate Chopin'
+        },
     },
     {
         id: '2',
         title: 'City of Glass',
-        author: 'Paul Auster',
-    },
+        author: {
+            id: '2',
+            name: 'Paul Auster'
+        }
+    }
 ];
+
+const authors = [{id: '1', name: 'zhangsan'}];
+const users = [{id: '1', name: 'zhangsan'}];
 
 const resolvers = {
     Query: {
-        QueryBooks: () => ({
-            books
-        }),
+        QueryBooks: () => {
+            return {
+                books: () => books
+            }
+        },
+        QueryUsers: () => {
+            return {
+                users: () => users
+            }
+        },
     },
     Mutation: {
-        MutationBookOne: (root, args, ctx) => {
-            console.log('args', args, ctx);
+        MutationBook: () => {
             return {
-                ...args,
-                id: '' + Math.random()
-            };
+                addBook: (args) => {
+                    console.log('args', args);
+                    const author = {id: ''+Math.random(),name: args.authorName};
+                    authors.push(author);
+                    return {
+                        title: args.title,
+                        author: author,
+                        id: '' + Math.random()
+                    };
+                }
+            }
+
         },
+        MutationUser: () => {
+            return {
+                addUser: ({name}) => {
+                    // noinspection JSCheckFunctionSignatures
+                    const user = {
+                        name,
+                        id: '' + (Math.max(...users.map(u=>parseInt(u.id))) + 1)
+                    };
+                    users.push(user);
+                    return user;
+                }
+            }
+        }
     }
 };
 
 module.exports = {
     resolvers,
-       typeDefs,
-}
+    typeDefs
+};

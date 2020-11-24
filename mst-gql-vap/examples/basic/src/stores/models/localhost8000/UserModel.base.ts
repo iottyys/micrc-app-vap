@@ -9,13 +9,13 @@ import { RootStoreType } from "./index"
 
 
 /**
- * AuthorDtoBase
- * auto generated base class for the model AuthorDtoModel.
+ * UserBase
+ * auto generated base class for the model UserModel.
  */
-export const AuthorDtoModelBase = ModelBase
-  .named('AuthorDto')
+export const UserModelBase = ModelBase
+  .named('User')
   .props({
-    __typename: types.optional(types.literal("AuthorDTO"), "AuthorDTO"),
+    __typename: types.optional(types.literal("User"), "User"),
     id: types.identifier,
     name: types.union(types.undefined, types.string),
   })
@@ -25,12 +25,12 @@ export const AuthorDtoModelBase = ModelBase
     }
   }))
 
-export class AuthorDtoModelSelector extends QueryBuilder {
+export class UserModelSelector extends QueryBuilder {
   get id() { return this.__attr(`id`) }
   get name() { return this.__attr(`name`) }
 }
-export function selectFromAuthorDto() {
-  return new AuthorDtoModelSelector()
+export function selectFromUser() {
+  return new UserModelSelector()
 }
 
-export const authorDtoModelPrimitives = selectFromAuthorDto().name
+export const userModelPrimitives = selectFromUser().name

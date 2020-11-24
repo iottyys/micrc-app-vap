@@ -5,6 +5,8 @@
  */
 import {getPath, Instance, resolvePath, tryResolve, types} from "mobx-state-tree";
 import {BooksStore} from "./books.api";
+import {UserStore} from "./user.api";
+import {UserModel} from "../models/localhost8000";
 import {AuthorDtoModel, AuthorWrittenModel, BookDtoModel, BookWrittenModel} from "../models/endpoint1";
 
 export interface RootStoreType extends Instance<typeof RootStore> {}
@@ -13,6 +15,7 @@ export interface RootStoreType extends Instance<typeof RootStore> {}
 const DBStore = types.model()
   .named('db')
   .props({
+    userList: types.optional(types.array(UserModel), []),
     bookDtos: types.optional(types.map(types.late((): any => BookDtoModel)), {}),
     authorDtos: types.optional(types.map(types.late((): any => AuthorDtoModel)), {}),
     bookWrittens: types.optional(types.map(types.late((): any => BookWrittenModel)), {}),
@@ -28,14 +31,16 @@ export const RootStore = types.model()
     db: types.optional(types.late((): any => DBStore), {}),
     // 每次添加api时，应该在数据文件中记录当前数据区包含的api，根据此信息生成
     books: types.optional(types.late((): any => BooksStore), {}),
+    users: types.optional(types.late((): any => UserStore), {}),
   })
   .actions((self) => ({
     action: (actions: [{ type: string, params: any }]) => {
+      console.log('root-----------------------start');
       self['books'].exec()
       self.books.action()
-      console.log("=====")
       console.log(getPath(self.db.bookDtos))
       console.log(resolvePath(self, "/db/test/1"))
+      console.log('root-----------------------end');
     }
   }))
   .views(self => ({
@@ -51,3 +56,4 @@ export const RootStore = types.model()
       return retVal
     }
   }))
+

@@ -40,6 +40,7 @@ export const BooksStore = MSTGQLStore
       const root = getRoot(self)
       // console.log(root)
       // console.log(getPath(root.db.bookDtos))
+      // @ts-ignore
       root.books.result = BooksResultModel.create({ value: BookWrittenModel.create({ id: 'test' }) })
       // console.log(resolvePath(self, "/param/BookMutation_addBook_book"))
       // console.log(resolvePath(root, '/books/result/value'))

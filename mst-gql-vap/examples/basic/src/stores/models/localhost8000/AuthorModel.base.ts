@@ -9,13 +9,13 @@ import { RootStoreType } from "./index"
 
 
 /**
- * AuthorWrittenBase
- * auto generated base class for the model AuthorWrittenModel.
+ * AuthorBase
+ * auto generated base class for the model AuthorModel.
  */
-export const AuthorWrittenModelBase = ModelBase
-  .named('AuthorWritten')
+export const AuthorModelBase = ModelBase
+  .named('Author')
   .props({
-    __typename: types.optional(types.literal("AuthorWritten"), "AuthorWritten"),
+    __typename: types.optional(types.literal("Author"), "Author"),
     id: types.identifier,
     name: types.union(types.undefined, types.string),
   })
@@ -25,12 +25,12 @@ export const AuthorWrittenModelBase = ModelBase
     }
   }))
 
-export class AuthorWrittenModelSelector extends QueryBuilder {
+export class AuthorModelSelector extends QueryBuilder {
   get id() { return this.__attr(`id`) }
   get name() { return this.__attr(`name`) }
 }
-export function selectFromAuthorWritten() {
-  return new AuthorWrittenModelSelector()
+export function selectFromAuthor() {
+  return new AuthorModelSelector()
 }
 
-export const authorWrittenModelPrimitives = selectFromAuthorWritten().name
+export const authorModelPrimitives = selectFromAuthor().name

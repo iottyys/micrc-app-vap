@@ -6,5 +6,7 @@ export default defineConfig({
   },
   routes: [
     { path: '/', component: '@/pages/index' },
+    { path: '/user', component: '@/pages/user' },
+    { path: '/userForm', component: '@/pages/userForm' },
   ],
 });
