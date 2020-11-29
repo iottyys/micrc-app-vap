@@ -4,17 +4,19 @@ import {observer} from "mobx-react";
 export default observer(({
   record,
   add,
+  changeAttr,
   saveOrUpdate
 }: {
   record: any,
-  add: () => {}
+  add: () => {},
+  changeAttr: () => {},
   saveOrUpdate: () => {}
 }) => {
   // console.log(record, add, saveOrUpdate);
-  return <div>
+  return <form id="userForm">
     <input type="button" value="Add" onClick={add} />
-    <input value={record['id']} readOnly={true} />
-    <input value={record['name']} />
+    ID: [{record['id']}]
+    <input name="name" value={record['name']} onChange={changeAttr} />
     <input type="button" value="Submit" onClick={saveOrUpdate} />
-  </div>
+  </form>
 });

@@ -30,25 +30,34 @@ export const UserFormStore = MSTGQLStore.named('UserFormStore')
       // @ts-ignore
       self.reset();
     },
-    saveOrUpdate: () => {
+    saveOrUpdate: (event: any) => {
       console.log('saveOrUpdate--start');
       const root = getRoot(self);
+      const json = {...self.param.user.toJSON()};
+      delete json.__typename;
+      let queryParam = JSON.stringify(json);
+      Object.keys(json).forEach(k=>queryParam = queryParam.replace(new RegExp('"' + k + '"', 'g'), k));
       let query, successCallback;
-      if (self.param.user.id) {
-        query = 'mutation { MutationUser { add(user: ' + JSON.stringify(self.param.user) + ') { id name } } }';
+      if (!self.param.user.id) {
+        query = 'mutation { MutationUser { add(user: ' + queryParam + ') { id name } } }';
         successCallback = (data: {MutationUser:{add: {id: string,name: string}}})=>{
           self.result.value = data.MutationUser.add;
+          // @ts-ignore
+          self.reset();
           // @ts-ignore
           root.users.select();
         }
       } else {
-        query = 'mutation { MutationUser { update(user: ' + JSON.stringify(self.param.user) + ') { id name } } }';
+        query = 'mutation { MutationUser { update(user: ' + queryParam + ') { id name } } }';
         successCallback = (data: {MutationUser:{update:{id: string,name: string}}})=>{
           self.result.value = data.MutationUser.update;
+          // @ts-ignore
+          self.reset();
           // @ts-ignore
           root.users.select();
         }
       }
+
       self.exec([
         {
           type: "api",
@@ -79,6 +88,23 @@ export const UserFormStore = MSTGQLStore.named('UserFormStore')
       ]);
     },
     reset: () => {
-      self.param.user = UserModel.create({ id: '', name: '' });
+      const userForm = document.getElementById('userForm');
+      if (userForm) {
+        // @ts-ignore
+        userForm.reset();
+      }
+      // console.log('self.param.user: ', self.param.user);
+      if (!self.param.user) {
+        self.param.user = UserModel.create({ id: '', name: '' });
+      }
+      self.param.user.id = "";
+      self.param.user.name = "";
+      // console.log('self.param.user: ', self.param.user);
+    },
+    changeAttr: (event: any) => {
+      const input = event.target;
+      self.param.user[input.name] = input.value;
+      // console.log('event: ', event);
+      // console.log('event: ', event.target);
     }
   }));
