@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import styles from './index.less';
 import {ConfigContext} from "../../config/context";
 import RootContainer, { RootStoreContext } from '../containers/root';
+import { Link } from 'umi'
 
 const Comp = () => {
   const store = useContext(RootStoreContext);
@@ -10,9 +11,7 @@ const Comp = () => {
   return (
     <div>
       <h1 className={styles.title}>Page index. store: {JSON.stringify(store, null, 2)}</h1>
-      <p><a href="/userForm">userForm</a></p>
-      <p><a href="/user">userList</a></p>
-
+      <p><Link to="/users">userList</Link></p>
     </div>
   );
 };
@@ -23,9 +22,9 @@ export default () => {
   return (
     <RootContainer>
       <RootStoreContext.Consumer>
-        {value => (
+        {store => (
           <div>
-            <h1 className={styles.title}>Page Index. store: {JSON.stringify(value)}</h1>
+            <h1 className={styles.title}>Page Index. store: {JSON.stringify(store)}</h1>
           </div>
         )}
       </RootStoreContext.Consumer>

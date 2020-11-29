@@ -8,7 +8,7 @@ import {getRoot, getPath, resolvePath, types, getEnv, getPropertyMembers} from "
 import { MSTGQLStore } from "@/stores/models/MSTGQLStore";
 import {UserModel} from "@/stores/models/localhost8000";
 import {BookWrittenModel} from "@/stores/models/test";
-import user from "@/pages/user";
+import user from "@/pages/users";
 
 
 const UserParamModel = types.model()

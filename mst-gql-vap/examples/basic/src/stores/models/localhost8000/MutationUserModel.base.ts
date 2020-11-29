@@ -12,7 +12,8 @@ import { RootStoreType } from "./index"
 
 /* The TypeScript type that explicits the refs to other models in order to prevent a circular refs issue */
 type Refs = {
-  addUser: UserModelType;
+  add: UserModelType;
+  update: UserModelType;
 }
 
 /**
@@ -23,7 +24,9 @@ export const MutationUserModelBase = withTypedRefs<Refs>()(ModelBase
   .named('MutationUser')
   .props({
     __typename: types.optional(types.literal("MutationUser"), "MutationUser"),
-    addUser: types.union(types.undefined, types.null, MSTGQLRef(types.late((): any => UserModel))),
+    add: types.union(types.undefined, types.null, MSTGQLRef(types.late((): any => UserModel))),
+    update: types.union(types.undefined, types.null, MSTGQLRef(types.late((): any => UserModel))),
+    remove: types.union(types.undefined, types.null, types.boolean),
   })
   .views(self => ({
     get store() {
@@ -32,10 +35,12 @@ export const MutationUserModelBase = withTypedRefs<Refs>()(ModelBase
   })))
 
 export class MutationUserModelSelector extends QueryBuilder {
-  addUser(builder?: string | UserModelSelector | ((selector: UserModelSelector) => UserModelSelector)) { return this.__child(`addUser`, UserModelSelector, builder) }
+  get remove() { return this.__attr(`remove`) }
+  add(builder?: string | UserModelSelector | ((selector: UserModelSelector) => UserModelSelector)) { return this.__child(`add`, UserModelSelector, builder) }
+  update(builder?: string | UserModelSelector | ((selector: UserModelSelector) => UserModelSelector)) { return this.__child(`update`, UserModelSelector, builder) }
 }
 export function selectFromMutationUser() {
   return new MutationUserModelSelector()
 }
 
-export const mutationUserModelPrimitives = selectFromMutationUser()
+export const mutationUserModelPrimitives = selectFromMutationUser().remove

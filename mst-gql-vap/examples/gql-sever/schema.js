@@ -17,10 +17,15 @@ const typeDefs = gql`
         author: Author!
     }
     type User {
+        # 主键ID
         id: ID!
         name: String!
     }
 
+    input UserInput {
+        id: ID
+        name: String
+    }
     # The "Query" type is special: it lists all of the available queries that
     # clients can execute, along with the return type for each. In this
     # case, the "books" query returns an array of zero or more Books (defined above).
@@ -28,13 +33,16 @@ const typeDefs = gql`
         books: [Book]
     }
     type QueryUsers {
-        users: [User]
+        users: [User],
+        findById(id: String): User
     }
     type MutationBook {
         addBook(title: String, authorName: String): Book
     }
     type MutationUser {
-        addUser(name: String): User
+        add(user: UserInput): User,
+        update(user: UserInput): User,
+        remove(id: String!): Boolean
     }
     
     type Query {
@@ -78,7 +86,10 @@ const resolvers = {
         },
         QueryUsers: () => {
             return {
-                users: () => users
+                users: () => users,
+                findById: ({id}) => {
+                    return users.find(u => u.id === id);
+                }
             }
         },
     },
@@ -100,7 +111,7 @@ const resolvers = {
         },
         MutationUser: () => {
             return {
-                addUser: ({name}) => {
+                add: ({user: { name }}) => {
                     // noinspection JSCheckFunctionSignatures
                     const user = {
                         name,
@@ -108,6 +119,20 @@ const resolvers = {
                     };
                     users.push(user);
                     return user;
+                },
+                update: ({user}) => {
+                    // noinspection JSCheckFunctionSignatures
+                    const idx = users.findIndex(u => u.id === user.id);
+                    const input = Object.assign(users[idx], user);
+                    users.splice(idx, 1, input);
+                    return user;
+                },
+                remove: ({id}) => {
+                    const oldCount = users.length;
+                    // noinspection JSCheckFunctionSignatures
+                    const idx = users.findIndex(u => u.id === id);
+                    users.splice(idx, 1);
+                    return oldCount === users.length + 1;
                 }
             }
         }

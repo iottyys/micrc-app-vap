@@ -14,6 +14,7 @@ import { RootStoreType } from "./index"
 /* The TypeScript type that explicits the refs to other models in order to prevent a circular refs issue */
 type Refs = {
   users: IObservableArray<UserModelType>;
+  findById: UserModelType;
 }
 
 /**
@@ -25,6 +26,7 @@ export const QueryUsersModelBase = withTypedRefs<Refs>()(ModelBase
   .props({
     __typename: types.optional(types.literal("QueryUsers"), "QueryUsers"),
     users: types.union(types.undefined, types.null, types.array(types.union(types.null, MSTGQLRef(types.late((): any => UserModel))))),
+    findById: types.union(types.undefined, types.null, MSTGQLRef(types.late((): any => UserModel))),
   })
   .views(self => ({
     get store() {
@@ -34,6 +36,7 @@ export const QueryUsersModelBase = withTypedRefs<Refs>()(ModelBase
 
 export class QueryUsersModelSelector extends QueryBuilder {
   users(builder?: string | UserModelSelector | ((selector: UserModelSelector) => UserModelSelector)) { return this.__child(`users`, UserModelSelector, builder) }
+  findById(builder?: string | UserModelSelector | ((selector: UserModelSelector) => UserModelSelector)) { return this.__child(`findById`, UserModelSelector, builder) }
 }
 export function selectFromQueryUsers() {
   return new QueryUsersModelSelector()

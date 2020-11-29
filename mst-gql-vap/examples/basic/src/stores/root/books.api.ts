@@ -32,22 +32,4 @@ export const BooksStore = MSTGQLStore
     param: types.optional(types.late((): any => BooksParamModel), {}),
     result: types.optional(types.late((): any => BooksResultModel), {})
   })
-  .actions(self => ({
-    action: (actions: [{ type: string, params: any }]) => {
-      // self.doAction(actions)
-      // console.log("root", getRoot(self))
-      // console.log("=====")
-      const root = getRoot(self)
-      // console.log(root)
-      // console.log(getPath(root.db.bookDtos))
-      // @ts-ignore
-      root.books.result = BooksResultModel.create({ value: BookWrittenModel.create({ id: 'test' }) })
-      // console.log(resolvePath(self, "/param/BookMutation_addBook_book"))
-      // console.log(resolvePath(root, '/books/result/value'))
-    }
-  }))
-  .views(self => ({
-    bind: (jsonpath: string, defaultVal: any, jslt: string) => {
-      return self.doBind(jsonpath, defaultVal, jslt)
-    }
-  }))
+

@@ -2,54 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4e384552-7609-4d8d-9f84-f7d00974658c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/examples/basic/EndpointClients.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/basic/src/pages/user.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/basic/src/pages/userForm.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/basic/src/stores/models/localhost8000/AuthorModel.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/basic/src/stores/models/localhost8000/BookModel.base.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/basic/src/stores/models/localhost8000/BookModel.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/basic/src/stores/models/localhost8000/MutationBookModel.base.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/basic/src/stores/models/localhost8000/MutationBookModel.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/basic/src/stores/models/localhost8000/MutationUserModel.base.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/basic/src/stores/models/localhost8000/MutationUserModel.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/basic/src/stores/models/localhost8000/QueryBooksModel.base.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/basic/src/stores/models/localhost8000/QueryBooksModel.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/basic/src/stores/models/localhost8000/QueryUsersModel.base.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/basic/src/stores/models/localhost8000/QueryUsersModel.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/basic/src/stores/models/localhost8000/RootStore.base.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/basic/src/stores/models/localhost8000/UserModel.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/basic/src/stores/models/localhost8000/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/basic/src/stores/root/user.api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/basic/src/component/antd/table.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/basic/src/component/common/input.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/basic/src/component/userForm.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/basic/src/connector/users/form.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/basic/src/connector/users/table.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/basic/src/containers/users.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/basic/src/pages/users.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/basic/src/stores/models/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/basic/src/stores/users/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/basic/src/stores/users/userForm.comp.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/basic/src/stores/users/userFrom.api.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/basic/src/stores/users/userTable.comp.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/examples/basic/src/stores/users/users.api.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/examples/basic/.umirc.ts" beforeDir="false" afterPath="$PROJECT_DIR$/examples/basic/.umirc.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/basic/config/runtime.ts" beforeDir="false" afterPath="$PROJECT_DIR$/examples/basic/config/runtime.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/basic/src/containers/root.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/examples/basic/src/containers/root.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/examples/basic/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/examples/basic/src/pages/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/basic/src/s/AuthorDtoModel.base.ts" beforeDir="false" afterPath="$PROJECT_DIR$/examples/basic/src/stores/models/localhost8000/AuthorModel.base.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/basic/src/s/AuthorDtoModel.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/basic/src/s/AuthorWrittenModel.base.ts" beforeDir="false" afterPath="$PROJECT_DIR$/examples/basic/src/stores/models/localhost8000/UserModel.base.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/basic/src/s/AuthorWrittenModel.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/basic/src/s/BookDtoModel.base.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/basic/src/s/BookDtoModel.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/basic/src/s/BookMutationModel.base.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/basic/src/s/BookMutationModel.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/basic/src/s/BookPagedModel.base.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/basic/src/s/BookPagedModel.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/basic/src/s/BookQueryModel.base.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/basic/src/s/BookQueryModel.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/basic/src/s/BookWrittenModel.base.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/basic/src/s/BookWrittenModel.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/basic/src/s/ModelBase.ts" beforeDir="false" afterPath="$PROJECT_DIR$/examples/basic/src/stores/models/localhost8000/ModelBase.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/basic/src/s/RootStore.base.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/basic/src/s/RootStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/examples/basic/src/stores/models/localhost8000/RootStore.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/basic/src/s/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/basic/src/s/reactUtils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/examples/basic/src/stores/models/localhost8000/reactUtils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/basic/src/pages/user.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/basic/src/pages/userForm.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/basic/src/stores/models/MSTGQLStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/examples/basic/src/stores/models/MSTGQLStore.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/basic/src/stores/models/localhost8000/MutationUserModel.base.ts" beforeDir="false" afterPath="$PROJECT_DIR$/examples/basic/src/stores/models/localhost8000/MutationUserModel.base.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/basic/src/stores/models/localhost8000/QueryUsersModel.base.ts" beforeDir="false" afterPath="$PROJECT_DIR$/examples/basic/src/stores/models/localhost8000/QueryUsersModel.base.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/basic/src/stores/models/localhost8000/RootStore.base.ts" beforeDir="false" afterPath="$PROJECT_DIR$/examples/basic/src/stores/models/localhost8000/RootStore.base.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/examples/basic/src/stores/root/books.api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/examples/basic/src/stores/root/books.api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/basic/src/stores/root/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/examples/basic/src/stores/root/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/basic/src/stores/root/user.api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/examples/basic/src/stores/root/user.api.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/examples/gql-sever/schema.js" beforeDir="false" afterPath="$PROJECT_DIR$/examples/gql-sever/schema.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/gql-sever/yarn.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,11 +66,12 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="true" />
     <property name="javascript.nodejs.core.library.configured.version" value="10.16.3" />
     <property name="javascript.nodejs.core.library.typings.version" value="10.17.44" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../demo/react-ruanyifeng" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/examples/basic/src/stores/users" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -106,21 +84,25 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/examples/basic/src/stores/models/endpoint1" />
-      <recent name="$PROJECT_DIR$/examples/basic/src/stores/models/user" />
-      <recent name="$PROJECT_DIR$/examples/basic/src/containers" />
-      <recent name="$PROJECT_DIR$/examples/basic/src/pages" />
-      <recent name="$PROJECT_DIR$/examples/basic/src/stores/root" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/examples/basic/src/stores/models/localhost8000" />
-      <recent name="$PROJECT_DIR$/examples/basic/src/stores/models/endpoint1" />
-      <recent name="$PROJECT_DIR$/examples/basic/src/stores/models/user" />
-      <recent name="$PROJECT_DIR$/examples/basic/src/stores/endpoints" />
+      <recent name="$PROJECT_DIR$/examples/basic/src/component/antd" />
+      <recent name="$PROJECT_DIR$/examples/basic/src/component/common" />
+      <recent name="$PROJECT_DIR$/examples/basic/src/stores/root" />
+      <recent name="$PROJECT_DIR$/examples/basic/src/component" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/examples/basic/src/stores/users" />
+      <recent name="$PROJECT_DIR$/examples/basic/src/component" />
+      <recent name="$PROJECT_DIR$/examples/basic/src/connector/users" />
+      <recent name="$PROJECT_DIR$/examples/basic/src/stores" />
+      <recent name="$PROJECT_DIR$/examples/basic/src/containers" />
     </key>
   </component>
   <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="StructureViewFactory">
+    <option name="AUTOSCROLL_FROM_SOURCE" value="true" />
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -139,8 +121,25 @@
       <workItem from="1605967171011" duration="23906000" />
       <workItem from="1606053980972" duration="16152000" />
       <workItem from="1606220507448" duration="263000" />
-      <workItem from="1606220781476" duration="695000" />
+      <workItem from="1606220781476" duration="1456000" />
+      <workItem from="1606222995518" duration="6046000" />
+      <workItem from="1606293156433" duration="372000" />
+      <workItem from="1606295595010" duration="1336000" />
+      <workItem from="1606308650456" duration="1072000" />
+      <workItem from="1606394895904" duration="3075000" />
+      <workItem from="1606437102932" duration="76000" />
+      <workItem from="1606457502800" duration="179000" />
+      <workItem from="1606458618331" duration="8835000" />
+      <workItem from="1606481714029" duration="62140000" />
     </task>
+    <task id="LOCAL-00001" summary="user:&#10;  查询 --界面没显示出来,只是在console下打印出来&#10;  新增 --简单实现,返回值console打印的">
+      <created>1606221686080</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1606221686080</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -164,6 +163,11 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <MESSAGE value="user:&#10;  查询 --界面没显示出来,只是在console下打印出来&#10;  新增 --简单实现,返回值console打印的" />
+    <option name="LAST_COMMIT_MESSAGE" value="user:&#10;  查询 --界面没显示出来,只是在console下打印出来&#10;  新增 --简单实现,返回值console打印的" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="559" y="159" key="#Inspections" timestamp="1606031586957">
       <screen x="0" y="0" width="1920" height="1008" />
@@ -173,23 +177,27 @@
       <screen x="-1920" y="23" width="1920" height="1057" />
     </state>
     <state x="-1456" y="321" key="#com.intellij.fileTypes.FileTypeChooser/1920.23.1920.1057/-1920.23.1920.1057/3840.23.1920.1057/0.23.1920.1010@-1920.23.1920.1057" timestamp="1604949429337" />
+    <state x="772" y="217" key="#com.intellij.ide.util.MemberChooser" timestamp="1606567190992">
+      <screen x="0" y="0" width="1920" height="1008" />
+    </state>
+    <state x="772" y="217" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1008@0.0.1920.1008" timestamp="1606567190992" />
     <state x="593" y="348" width="830" height="300" key="#com.intellij.ide.util.TreeDirectoryChooserDialog" timestamp="1606220604303">
       <screen x="0" y="0" width="1920" height="1008" />
     </state>
     <state x="593" y="348" width="830" height="300" key="#com.intellij.ide.util.TreeDirectoryChooserDialog/0.0.1920.1008@0.0.1920.1008" timestamp="1606220604303" />
-    <state x="453" y="232" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1606037627783">
+    <state x="453" y="232" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1606654458034">
       <screen x="0" y="0" width="1920" height="1008" />
     </state>
-    <state x="453" y="232" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1008@0.0.1920.1008" timestamp="1606037627783" />
+    <state x="453" y="232" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1008@0.0.1920.1008" timestamp="1606654458034" />
     <state x="-1467" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1920.23.1920.1057/-1920.23.1920.1057/3840.23.1920.1057/0.23.1920.1010@-1920.23.1920.1057" timestamp="1605125888321" />
-    <state x="241" y="86" key="CommitChangelistDialog2" timestamp="1606221632806">
+    <state x="241" y="86" key="CommitChangelistDialog2" timestamp="1606221685985">
       <screen x="0" y="0" width="1920" height="1008" />
     </state>
-    <state x="241" y="86" key="CommitChangelistDialog2/0.0.1920.1008@0.0.1920.1008" timestamp="1606221632806" />
-    <state x="100" y="100" width="1720" height="808" key="DiffContextDialog" timestamp="1606221425208">
+    <state x="241" y="86" key="CommitChangelistDialog2/0.0.1920.1008@0.0.1920.1008" timestamp="1606221685985" />
+    <state x="100" y="100" width="1720" height="808" key="DiffContextDialog" timestamp="1606654665505">
       <screen x="0" y="0" width="1920" height="1008" />
     </state>
-    <state x="100" y="100" width="1720" height="808" key="DiffContextDialog/0.0.1920.1008@0.0.1920.1008" timestamp="1606221425208" />
+    <state x="100" y="100" width="1720" height="808" key="DiffContextDialog/0.0.1920.1008@0.0.1920.1008" timestamp="1606654665505" />
     <state x="747" y="256" key="FileChooserDialogImpl" timestamp="1606123280827">
       <screen x="0" y="0" width="1920" height="1008" />
     </state>
@@ -212,14 +220,19 @@
     <state x="213" y="180" key="SettingsEditor/0.0.1920.1008@0.0.1920.1008" timestamp="1606220769513" />
     <state x="-1707" y="212" key="SettingsEditor/0.23.1920.1010/-1920.23.1920.1057/1920.23.1920.1057/3840.23.1920.1057@-1920.23.1920.1057" timestamp="1605438653530" />
     <state x="-1707" y="212" key="SettingsEditor/1920.23.1920.1057/-1920.23.1920.1057/3840.23.1920.1057/0.23.1920.1010@-1920.23.1920.1057" timestamp="1604862438038" />
+    <state x="559" y="222" key="Vcs.Push.Dialog.v2" timestamp="1606221687960">
+      <screen x="0" y="0" width="1920" height="1008" />
+    </state>
+    <state x="559" y="222" key="Vcs.Push.Dialog.v2/0.0.1920.1008@0.0.1920.1008" timestamp="1606221687960" />
     <state x="735" y="418" width="449" height="172" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606219449828">
       <screen x="0" y="0" width="1920" height="1008" />
     </state>
     <state x="735" y="418" width="449" height="172" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1008@0.0.1920.1008" timestamp="1606219449828" />
-    <state x="629" y="251" width="701" height="506" key="find.popup" timestamp="1606050679033">
+    <state x="629" y="251" width="701" height="506" key="find.popup" timestamp="1606662794771">
       <screen x="0" y="0" width="1920" height="1008" />
     </state>
-    <state x="629" y="251" width="701" height="506" key="find.popup/0.0.1920.1008@0.0.1920.1008" timestamp="1606050679033" />
+    <state x="629" y="251" width="701" height="506" key="find.popup/0.0.1920.1008@0.0.1920.1008" timestamp="1606662794771" />
+    <state x="2549" y="269" width="701" height="543" key="find.popup/1920.0.1920.1080/0.0.1920.1008@1920.0.1920.1080" timestamp="1606467203606" />
     <state x="-1416" y="438" key="scopes" timestamp="1604862426888">
       <screen x="-1920" y="23" width="1920" height="1057" />
     </state>
