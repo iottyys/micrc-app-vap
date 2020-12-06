@@ -16,11 +16,7 @@ export const UserTableCompStore = types.model().named('UserTableCompStore')
     dataSource: types.array(UserModel)
   })
   .actions((self) => ({
-    setColumns: (columns: [{title: string, dataIndex: string, key: string}]) => {
-      self.columns.push(...columns);
-    },
     afterCreate: () => {
-      // @ts-ignore
-      self.setColumns([{title: 'ID', dataIndex: 'id', key: 'id'}, {title: '姓名', dataIndex: 'name', key: 'name'}]);
+      self.columns.push({title: 'ID', dataIndex: 'id', key: 'id'}, {title: '姓名', dataIndex: 'name', key: 'name'});
     }
   }));

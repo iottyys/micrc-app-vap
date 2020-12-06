@@ -18,6 +18,8 @@ export const UserModelBase = ModelBase
     __typename: types.optional(types.literal("User"), "User"),
     id: types.identifier,
     name: types.union(types.undefined, types.string),
+    age: types.union(types.undefined, types.null, types.integer),
+    sex: types.union(types.undefined, types.null, types.boolean),
   })
   .views(self => ({
     get store() {
@@ -28,9 +30,11 @@ export const UserModelBase = ModelBase
 export class UserModelSelector extends QueryBuilder {
   get id() { return this.__attr(`id`) }
   get name() { return this.__attr(`name`) }
+  get age() { return this.__attr(`age`) }
+  get sex() { return this.__attr(`sex`) }
 }
 export function selectFromUser() {
   return new UserModelSelector()
 }
 
-export const userModelPrimitives = selectFromUser().name
+export const userModelPrimitives = selectFromUser().name.age.sex

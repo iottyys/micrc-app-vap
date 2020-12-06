@@ -20,11 +20,14 @@ const typeDefs = gql`
         # 主键ID
         id: ID!
         name: String!
+        age: Int
+        sex: Boolean
     }
 
     input UserInput {
-        id: ID
-        name: String
+        name: String!
+        age: Int
+        sex: Boolean
     }
     # The "Query" type is special: it lists all of the available queries that
     # clients can execute, along with the return type for each. In this
@@ -34,15 +37,15 @@ const typeDefs = gql`
     }
     type QueryUsers {
         users: [User],
-        findById(id: String): User
+        findById(id: ID): User
     }
     type MutationBook {
         addBook(title: String, authorName: String): Book
     }
     type MutationUser {
         add(user: UserInput): User,
-        update(user: UserInput): User,
-        remove(id: String!): Boolean
+        update(id: ID, user: UserInput): User,
+        remove(id: String): Boolean
     }
     
     type Query {
@@ -75,7 +78,7 @@ const books = [
 ];
 
 const authors = [{id: '1', name: 'zhangsan'}];
-const users = [{id: '1', name: 'zhangsan'}];
+const users = [{id: '1', name: 'zhangsan', age: 23, sex: false}];
 
 const resolvers = {
     Query: {
@@ -84,58 +87,51 @@ const resolvers = {
                 books: () => books
             }
         },
-        QueryUsers: () => {
-            return {
-                users: () => users,
-                findById: ({id}) => {
-                    return users.find(u => u.id === id);
-                }
+        QueryUsers: () => ({
+            users: () => users,
+            findById: ({id}) => {
+                return users.find(u => u.id === id);
             }
-        },
+        }),
     },
     Mutation: {
-        MutationBook: () => {
-            return {
-                addBook: (args) => {
-                    console.log('args', args);
-                    const author = {id: ''+Math.random(),name: args.authorName};
-                    authors.push(author);
-                    return {
-                        title: args.title,
-                        author: author,
-                        id: '' + Math.random()
-                    };
-                }
+        MutationBook: () => ({
+            addBook: (args) => {
+                console.log('args', args);
+                const author = {id: ''+Math.random(),name: args.authorName};
+                authors.push(author);
+                return {
+                    title: args.title,
+                    author: author,
+                    id: '' + Math.random()
+                };
             }
-
-        },
-        MutationUser: () => {
-            return {
-                add: ({user: { name }}) => {
-                    // noinspection JSCheckFunctionSignatures
-                    const user = {
-                        name,
-                        id: '' + (Math.max(...users.map(u=>parseInt(u.id))) + 1)
-                    };
-                    users.push(user);
-                    return user;
-                },
-                update: ({user}) => {
-                    // noinspection JSCheckFunctionSignatures
-                    const idx = users.findIndex(u => u.id === user.id);
-                    const input = Object.assign(users[idx], user);
-                    users.splice(idx, 1, input);
-                    return user;
-                },
-                remove: ({id}) => {
-                    const oldCount = users.length;
-                    // noinspection JSCheckFunctionSignatures
-                    const idx = users.findIndex(u => u.id === id);
-                    users.splice(idx, 1);
-                    return oldCount === users.length + 1;
-                }
+        }),
+        MutationUser: () => ({
+            add: ({user}) => {
+                // noinspection JSCheckFunctionSignatures
+                const curUser = {
+                    ...user,
+                    id: '' + (Math.max(...users.map(u=>parseInt(u.id))) + 1)
+                };
+                users.push(curUser);
+                return curUser;
+            },
+            update: ({id, user}) => {
+                // noinspection JSCheckFunctionSignatures
+                const idx = users.findIndex(u => u.id === id);
+                const input = Object.assign(users[idx], user);
+                users.splice(idx, 1, input);
+                return input;
+            },
+            remove: ({id}) => {
+                const oldCount = users.length;
+                // noinspection JSCheckFunctionSignatures
+                const idx = users.findIndex(u => u.id === id);
+                users.splice(idx, 1);
+                return oldCount === users.length + 1;
             }
-        }
+        })
     }
 };
 

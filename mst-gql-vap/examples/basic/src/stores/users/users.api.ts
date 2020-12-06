@@ -1,16 +1,16 @@
 /**
  * api store，包含参数，结果模型
  */
-import {getPath, resolvePath, types} from "mobx-state-tree";
+import {getPath, getRoot, resolvePath, types} from "mobx-state-tree";
 
 import {MSTGQLStore} from "@/stores/models/MSTGQLStore";
-import {UserModel} from "@/stores/models/localhost8000";
+import {QueryUsersModel, RootStore, selectFromQueryUsers, UserModel} from "@/stores/models/localhost8000";
 
 
 const UsersParamModel = types.model().named('UsersParam')
   .props({
     // 由选择的执行属性(带有所属type信息MutationUser，field信息addUser，field-args信息user UserModel)构建
-    users: types.union(types.undefined, UserModel)
+    query: types.optional(QueryUsersModel, {})
   });
 const UsersResultModel = types.model().named('UsersResult')
   .props({
@@ -31,6 +31,9 @@ export const UsersStore = MSTGQLStore.named('UsersStore')
       self.select();
     },
     select: () => {
+      // console.log('UsersStore:  ', self);
+      // console.log(selectFromQueryUsers().users())
+
       self.exec([
         {
           type: "api",
@@ -38,9 +41,10 @@ export const UsersStore = MSTGQLStore.named('UsersStore')
             changeLoading: (loading: boolean) => {
               self.loading = loading;
             },
-            query: 'query { QueryUsers { users {id name} } }',
-            successCallback: (data: {QueryUsers:{users:[{id: string,name: string}]}})=>{
+            query: 'query { QueryUsers { users {id name age sex} } }',
+            successCallback: (data: {QueryUsers:{users:[{id: string,name: string,age:number,sex:boolean}]}})=>{
               self.result.value = data.QueryUsers.users;
+              // console.log('UsersStore:  ', self);
             }
           }
         }

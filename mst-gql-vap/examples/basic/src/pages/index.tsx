@@ -7,7 +7,7 @@ import { Link } from 'umi'
 const Comp = () => {
   const store = useContext(RootStoreContext);
 
-  console.log("store: ", store);
+  // console.log("store: ", store);
   return (
     <div>
       <h1 className={styles.title}>Page index. store: {JSON.stringify(store, null, 2)}</h1>

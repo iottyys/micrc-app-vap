@@ -23,8 +23,9 @@ import { mutationUserModelPrimitives, MutationUserModelSelector } from "./Mutati
 
 
 export type UserInput = {
-  id?: string
-  name?: string
+  name: string
+  age?: number
+  sex?: boolean
 }
 /* The TypeScript type that explicits the refs to other models in order to prevent a circular refs issue */
 type Refs = {
