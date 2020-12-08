@@ -17,7 +17,7 @@ const plugins = new Map<string, (params: any) => {}>();
 
 export default ({ children }: any) => {
   const endpoints = EndpointClients.withEndpoints(useContext(ConfigContext).endpoints).getClients(api_endpoints);
-  const rootStore = RootStore.create({users:{result:{value: []}}}, { endpoints, plugins });
+  const rootStore = RootStore.create({}, { endpoints, plugins });
   return (
     <RootStoreContext.Provider value={rootStore}>
       { children }

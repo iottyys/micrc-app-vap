@@ -8,7 +8,9 @@ import {UserModel} from "../models/localhost8000";
 import {UsersStore} from "./users.api";
 import {UserTableCompStore} from "./userTable.comp";
 import {UserFormCompStore} from "./userForm.comp";
-import {UserFormStore} from "./userFrom.api";
+import {UserSaveStore} from "@/stores/users/userSave.api";
+import {UserUpdateStore} from "@/stores/users/userUpdate.api";
+import {UserRemoveStore} from "@/stores/users/userRemove.api";
 
 export interface RootStoreType extends Instance<typeof RootStore> {}
 
@@ -29,7 +31,9 @@ export const RootStore = types.model()
     db: types.optional(types.late((): any => DBStore), {}),
     // 每次添加api时，应该在数据文件中记录当前数据区包含的api，根据此信息生成
     users: types.optional(types.late((): any => UsersStore), {}),
-    userForm: types.optional(types.late((): any => UserFormStore), {}),
+    userSave: types.optional(types.late((): any => UserSaveStore), {}),
+    userUpdate: types.optional(types.late((): any => UserUpdateStore), {}),
+    userRemove: types.optional(types.late((): any => UserRemoveStore), {}),
     userTableComp: types.optional(types.late((): any => UserTableCompStore), {}),
     userFormComp: types.optional(types.late((): any => UserFormCompStore), {})
   })

@@ -52,7 +52,7 @@ export const UserFormStore = MSTGQLStore.named('UserFormStore')
           // @ts-ignore
           self.reset();
           // @ts-ignore
-          root.users.select();
+          root.users.action();
         }
       } else {
         query = 'mutation { MutationUser { update(id:"'+self.param.id+'",user: ' + queryParam + ') { id name age sex } } }';
@@ -61,7 +61,7 @@ export const UserFormStore = MSTGQLStore.named('UserFormStore')
           // @ts-ignore
           self.reset();
           // @ts-ignore
-          root.users.select();
+          root.users.action();
         }
       }
       // console.log('query: ', query);
@@ -142,6 +142,7 @@ export const UserFormStore = MSTGQLStore.named('UserFormStore')
     },
     remove: (id: string) => {
       // console.log('param:  ', id);
+      const root = getRoot(self);
       self.exec([
         {
           type: "api",
@@ -153,7 +154,7 @@ export const UserFormStore = MSTGQLStore.named('UserFormStore')
             successCallback: (data: {MutationUser:{remove:{id: string}}})=>{
               const success = data.MutationUser.remove;
               // @ts-ignore
-              self.select();
+              root.users.action();
             }
           }
         }

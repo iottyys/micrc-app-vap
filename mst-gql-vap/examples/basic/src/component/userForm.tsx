@@ -4,32 +4,23 @@ import {observer} from "mobx-react";
 export default observer(({
   id,
   record,
-  name,
-  age,
-  sex,
-  add,
-  changeAttr,
-  saveOrUpdate
+  reset,
+  change,
+  save
 }: {
   id: string,
   record: any,
-  name: string,
-  age: number,
-  sex: boolean,
-  add: () => {},
-  changeAttr: () => {},
-  saveOrUpdate: () => {}
+  reset: () => {},
+  change: () => {},
+  save: () => {}
 }) => {
-  console.log('-----------record: ', record);
-  console.log('-----------id: ', id);
-  console.log('-----------name: ', name);
-  return <form id="userForm">
-    <input type="button" value="Add" onClick={add} />
-    ID: [{id}]
-    <input name="name" value={record['name']} onChange={changeAttr} />
-    <input type="number" name="age" value={record['age']} onChange={changeAttr} />
-    <label>男<input type="radio" name="sex" value="true" checked={record['sex']} onChange={changeAttr} /></label>
-    <label>女<input type="radio" name="sex" value="false" checked={!record['sex']} onChange={changeAttr} /></label>
-    <input type="button" value="Submit" onClick={saveOrUpdate} />
+  // console.log('record: ', record);
+  return <form id={'userForm'+id}>
+    <input name="name" value={record['name']} onChange={change} />
+    <input type="number" name="age" value={record['age']} onChange={change} />
+    <label>男<input type="radio" name="sex" value="1" checked={record['sex']} onChange={change} /></label>
+    <label>女<input type="radio" name="sex" value="" checked={!record['sex']} onChange={change} /></label>
+    <input type="button" value="Submit" onClick={save} />
+    <input type="button" value="Reset" onClick={reset} />
   </form>
 });

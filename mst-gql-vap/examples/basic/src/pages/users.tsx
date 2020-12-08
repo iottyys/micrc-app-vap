@@ -1,7 +1,7 @@
 import React from 'react';
 
 import RootContainer from '../containers/users';
-import UserForm from '../connector/users/form'
+import UserForm from '../connector/users/saveform'
 import UserTable from '../connector/users/table'
 
 

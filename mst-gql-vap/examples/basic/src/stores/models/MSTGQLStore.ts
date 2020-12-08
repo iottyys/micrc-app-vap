@@ -1,8 +1,8 @@
 import {
-    flow,
-    getEnv,
-    getPropertyMembers,
-    types,
+  flow,
+  getEnv,
+  getPropertyMembers, getRoot, resolvePath,
+  types,
 } from "mobx-state-tree";
 
 // fixme 打包有问题，会导致json-pointer不可用，暂时生成在工程的stores/models中
@@ -37,8 +37,40 @@ export const MSTGQLStore = types
             console.error("不能都为空")
         }
 
-        const execCallback = flow(function*(fn: () => any) {
-          fn();
+        const setValue = flow(function*(path: string, value: any) {
+          const root = getRoot(self);
+          const pathNames = path.split('/').filter(p => p);
+          let node = root, nodeVal = root;
+          const len = pathNames.length;
+          for(let i = 0; i < len; i++) {
+            const pathName = pathNames[i];
+            node = getPropertyMembers(nodeVal).properties[pathName];
+            if (i !== len - 1) {
+              // @ts-ignore
+              nodeVal = nodeVal[pathName];
+            }
+            // console.log('node: ', pathName, node, nodeVal);
+          }
+          // @ts-ignore
+          const currentType = node.describe();
+          // console.log('currentType: ', currentType);
+          if (currentType.includes('number')) {
+            value = parseFloat(value);
+          } else if (currentType.includes('integer')) {
+            value = parseInt(value);
+          } else if (currentType.includes('boolean')) {
+            value = Boolean(value);
+          } else {
+          }
+          // @ts-ignore
+          nodeVal[pathNames[len - 1]] = value;
+          // console.log('node: ', node, nodeVal, value, typeof(value));
+        });
+
+        const change = flow(function*(path: string, event: any) {
+          const cmp = event.target;
+          // console.log('change: ', path, cmp, cmp.name, cmp.value, typeof(cmp.value));
+          setValue(path + cmp.name, cmp.value);
         });
 
         const exec = flow(function*(actions: [{ type: 'state' | 'route' | 'api' | 'plugin', params: any }]) {
@@ -48,6 +80,7 @@ export const MSTGQLStore = types
             // console.log('type: ', type, ' params: ', params);
             switch (type) {
               case 'state': {
+                setValue(params['path'], params['value']);
                 break;
               }
               case 'route': {
@@ -92,7 +125,7 @@ export const MSTGQLStore = types
         });
 
         return {
-            exec, execCallback
+            exec, change, setValue
         }
     })
     .views((self) => {

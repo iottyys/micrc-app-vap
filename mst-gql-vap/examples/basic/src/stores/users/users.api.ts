@@ -28,9 +28,9 @@ export const UsersStore = MSTGQLStore.named('UsersStore')
   .actions((self) => ({
     afterCreate: () => {
       // @ts-ignore
-      self.select();
+      self.action();
     },
-    select: () => {
+    action: () => {
       // console.log('UsersStore:  ', self);
       // console.log(selectFromQueryUsers().users())
 
